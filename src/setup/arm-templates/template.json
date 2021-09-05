@@ -1,0 +1,313 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "resource_group": {
+            "type": "string"
+        },
+        "key_vault": {
+            "defaultValue": "kv",
+            "type": "String"
+        },
+        "application_insights": {
+            "defaultValue": "ai",
+            "type": "String"
+        },
+        "databricks_workspace": {
+            "defaultValue": "dbkworkspace",
+            "type": "String"
+        },
+        "storage_account": {
+            "defaultValue": "sa",
+            "type": "String"
+        },
+        "log_analytics_workspace": {
+            "defaultValue": "law",
+            "type": "String"
+        }
+    },
+    "variables": {
+
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2020-10-01",
+            "location": "[parameters('location')]",
+            "name": "[parameters('resource_group')]",
+            "properties": {}
+        },
+        {
+            "name": "nestedDeployment1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-10-01",
+            "resourceGroup": "[parameters('resource_group')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('resource_group'))]"
+            ],
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                    "resource_group": {
+                        "value": "[parameters('resource_group')]"
+                    },
+                    "databricks_workspace": {
+                        "value": "[toLower(parameters('databricks_workspace'))]"
+                    },
+                    "key_vault": {
+                        "value": "[toLower(parameters('key_vault'))]"
+                    },
+                    "application_insights": {
+                        "value": "[tolower(parameters('application_insights'))]"
+                    },
+                    "log_analytics_workspace": {
+                        "value": "[tolower(parameters('log_analytics_workspace'))]"
+                    },
+                    "storage_account": {
+                        "value": "[tolower(parameters('storage_account'))]"
+                    }
+                },
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "resource_group": {
+                            "type": "string"
+                        },
+                        "key_vault": {
+                            "type": "String"
+                        },
+                        "application_insights": {
+                            "type": "String"
+                        },
+                        "databricks_workspace": {
+                            "type": "String"
+                        },
+                        "storage_account": {
+                            "type": "String"
+                        },
+                        "log_analytics_workspace": {
+                            "type": "String"
+                        }
+                    },
+                    "variables": {
+                        "var_dbk_workspace_name": "[tolower(concat(resourceGroup().name, '-', parameters('databricks_workspace')))]",
+                        "var_dbk_managedResourceGroupName": "[tolower(concat(variables('var_dbk_workspace_name'), '-databricks-rg-', uniqueString(variables('var_dbk_workspace_name'), resourceGroup().id)))]",
+                        "var_dbk_managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', variables('var_dbk_managedResourceGroupName'))]",
+                        "var_storage": {
+                            "storageAccounts": {
+                                "name": "[tolower(concat(replace(parameters('resource_group'), '-', ''), parameters('storage_account')))]",
+                                // "name": "[replace(replace(tolower(parameters('storageAccountNamePrefix')), '-',''),'.','')]",
+                                "type": "Standard_LRS"
+                            }
+                        },
+                        "var_application_insights": {
+                            "law_name": "[tolower(concat(parameters('resource_group'), '-', parameters('log_analytics_workspace')))]",
+                            "name": "[tolower(concat(parameters('resource_group'), '-', parameters('application_insights')))]"
+                        }
+                    },
+                    "resources": [
+                        {
+                            "type": "Microsoft.Databricks/workspaces",
+                            "apiVersion": "2018-04-01",
+                            "name": "[variables('var_dbk_workspace_name')]",
+                            "location": "[resourceGroup().location]",
+                            "sku": {
+                                "name": "standard"
+                            },
+                            "properties": {
+                                "managedResourceGroupId": "[variables('var_dbk_managedResourceGroupId')]"
+                                // "authorizations": [
+                                //     {
+                                //         "principalId": "9a74af6f-d153-4348-988a-e2672920bee9",
+                                //         "roleDefinitionId": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"  // Owner
+                                //     }
+                                // ]
+                                // "createdBy": {},
+                                // "updatedBy": {},
+                                // "createdDateTime": "2021-04-09T09:29:22.5851863Z"
+                            }
+                        },
+                        {
+                            "type": "Microsoft.KeyVault/vaults",
+                            "apiVersion": "2020-04-01-preview",
+                            "name": "[concat(resourceGroup().name, parameters('key_vault'))]",
+                            "location": "[resourceGroup().location]",
+                            "properties": {
+                                "sku": {
+                                    "family": "A",
+                                    "name": "Standard"
+                                },
+                                "tenantId": "[subscription().tenantId]",
+                                "accessPolicies": [],
+                                "enabledForDeployment": false,
+                                "enabledForDiskEncryption": false,
+                                "enabledForTemplateDeployment": false,
+                                "enableSoftDelete": true,
+                                "softDeleteRetentionInDays": 90,
+                                "enableRbacAuthorization": false,
+                                "vaultUri": "[concat('https://', parameters('key_vault'), '.vault.azure.net/')]"
+                            }
+                        },
+                        {
+                            "type": "microsoft.operationalinsights/workspaces",
+                            "apiVersion": "2020-10-01",
+                            "name": "[variables('var_application_insights').law_name]",
+                            "location": "[resourceGroup().location]",
+                            "properties": {
+                                "sku": {
+                                    "name": "pergb2018"
+                                },
+                                "retentionInDays": 30,
+                                "features": {
+                                    "legacy": 0,
+                                    "searchVersion": 1,
+                                    "enableLogAccessUsingOnlyResourcePermissions": true
+                                },
+                                "workspaceCapping": {
+                                    "dailyQuotaGb": -1
+                                },
+                                "publicNetworkAccessForIngestion": "Enabled",
+                                "publicNetworkAccessForQuery": "Enabled"
+                            }
+                        },
+                        {
+                            "type": "Microsoft.Storage/storageAccounts",
+                            "apiVersion": "2021-01-01",
+                            "name": "[variables('var_storage').storageAccounts.name]",
+                            "location": "[resourceGroup().location]",
+                            "sku": {
+                                "name": "Standard_RAGRS",
+                                "tier": "Standard"
+                            },
+                            "kind": "StorageV2",
+                            "properties": {
+                                "minimumTlsVersion": "TLS1_2",
+                                "allowBlobPublicAccess": true,
+                                "allowSharedKeyAccess": true,
+                                "isHnsEnabled": true,
+                                "networkAcls": {
+                                    "bypass": "AzureServices",
+                                    "virtualNetworkRules": [],
+                                    "ipRules": [],
+                                    "defaultAction": "Allow"
+                                },
+                                "supportsHttpsTrafficOnly": true,
+                                "encryption": {
+                                    "services": {
+                                        "file": {
+                                            "keyType": "Account",
+                                            "enabled": true
+                                        },
+                                        "blob": {
+                                            "keyType": "Account",
+                                            "enabled": true
+                                        }
+                                    },
+                                    "keySource": "Microsoft.Storage"
+                                },
+                                "accessTier": "Hot"
+                            }
+                        },
+                        {
+                            "type": "microsoft.insights/components",
+                            "apiVersion": "2020-02-02-preview",
+                            "name": "[variables('var_application_insights').name]",
+                            "location": "[resourceGroup().location]",
+                            "dependsOn": [
+                                "[resourceId('microsoft.operationalinsights/workspaces', variables('var_application_insights').law_name)]"
+                            ],
+                            "kind": "web",
+                            "properties": {
+                                "Application_Type": "web",
+                                "Flow_Type": "Redfield",
+                                "Request_Source": "IbizaAIExtension",
+                                "WorkspaceResourceId": "[resourceId('microsoft.operationalinsights/workspaces', variables('var_application_insights').law_name)]",
+                                "IngestionMode": "LogAnalytics",
+                                "publicNetworkAccessForIngestion": "Enabled",
+                                "publicNetworkAccessForQuery": "Enabled"
+                            }
+                        },
+                        {
+                            "type": "Microsoft.Storage/storageAccounts/blobServices",
+                            "apiVersion": "2021-01-01",
+                            "name": "[concat(variables('var_storage').storageAccounts.name, '/default')]",
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Storage/storageAccounts', variables('var_storage').storageAccounts.name)]"
+                            ],
+                            "sku": {
+                                "name": "Standard_RAGRS",
+                                "tier": "Standard"
+                            },
+                            "properties": {
+                                "cors": {
+                                    "corsRules": []
+                                },
+                                "deleteRetentionPolicy": {
+                                    "enabled": false
+                                }
+                            }
+                        }
+                        // {
+                        //     "type": "Microsoft.Storage/storageAccounts/fileServices",
+                        //     "apiVersion": "2021-01-01",
+                        //     "name": "[concat(variables('var_storage').storageAccounts.name, '/default')]",
+                        //     "dependsOn": [
+                        //         "[resourceId('Microsoft.Storage/storageAccounts', variables('var_storage').storageAccounts.name)]"
+                        //     ],
+                        //     "sku": {
+                        //         "name": "Standard_RAGRS",
+                        //         "tier": "Standard"
+                        //     },
+                        //     "properties": {
+                        //         "protocolSettings": {
+                        //             "smb": {}
+                        //         },
+                        //         "cors": {
+                        //             "corsRules": []
+                        //         },
+                        //         "shareDeleteRetentionPolicy": {
+                        //             "enabled": true,
+                        //             "days": 7
+                        //         }
+                        //     }
+                        // },
+                        // {
+                        //     "type": "Microsoft.Storage/storageAccounts/queueServices",
+                        //     "apiVersion": "2021-01-01",
+                        //     "name": "[concat(variables('var_storage').storageAccounts.name, '/default')]",
+                        //     "dependsOn": [
+                        //         "[resourceId('Microsoft.Storage/storageAccounts', variables('var_storage').storageAccounts.name)]"
+                        //     ],
+                        //     "properties": {
+                        //         "cors": {
+                        //             "corsRules": []
+                        //         }
+                        //     }
+                        // },
+                        // {
+                        //     "type": "Microsoft.Storage/storageAccounts/tableServices",
+                        //     "apiVersion": "2021-01-01",
+                        //     "name": "[concat(variables('var_storage').storageAccounts.name, '/default')]",
+                        //     "dependsOn": [
+                        //         "[resourceId('Microsoft.Storage/storageAccounts', variables('var_storage').storageAccounts.name)]"
+                        //     ],
+                        //     "properties": {
+                        //         "cors": {
+                        //             "corsRules": []
+                        //         }
+                        //     }
+                        // }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ]
+}
