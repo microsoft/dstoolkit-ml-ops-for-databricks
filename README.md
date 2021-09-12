@@ -1,29 +1,66 @@
-# Solution Setup guide
+![Banner](docs/images/MLOps_for_databricks_Solution_Acclerator_logo.JPG)
+
+About this repository
+============================================================================================================================================
+This respository contains the Databricks development framework for delivering any Data Engineering projects, and machine learning projects based on the Azure Technologies.
 
 
+Details of the accelerator
+============================================================================================================================
 
-## Prerequisite
+The acclerator contains few of the core features of databricks development which can be extended or reused in any implementation projects with databricks. 
 
->1. Active Azure Subscription
->2. Azure Service Principal (valid Client ID and secret ) which has the contributor permission the subscription. We are going to create the resource group using the service principal.
+- Logging Framework using the [Opensensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+- Support for Databricks development from VS Code IDE using the [Databricks Connect](https://docs.microsoft.com/en-us/azure/databricks/dev-tools/databricks-connect#visual-studio-code) feature.
+- continous development with [Python Local Packaging](https://packaging.python.org/tutorials/packaging-projects/)
+- Implementation of the databricks utilties in VS Code such as dbutils, notebook execution, secret handling. 
+- Exampler Model file which uses the framework end to end.
+
+Prerequisites
+============================================================================================================================
+
+In order to successfully complete your solution, you will need to have access to and or provisioned the following:
+
+-   Access to an Azure subscription
+-   Service Principal (valid Client ID and secret ) which has the contributor permission the subscription. We are going to create the resource group using the service principal.
+-   VS Code installed. 
+-   Docker Desktop Installed.
+
+
+Getting Started
+================================================================================================================================
+
+The below sections provide the step by step approach to set up the solution. As part of this solution, we need the following resources to be provisioned in a resource group. 
+
+1. Azure Databricks
+2. Application Insight Instance.
+3. A log analytics workspace for the App Insight.
+4. Azure Key Vault to store the secrets.
+5. A Storage Account. 
+
 
 ## Section 1: Docker Image Load in VS Code
 
-1.	Clone the Repository : https://DAISolutions@dev.azure.com/DAISolutions/MLOperationalization/_git/MLOpsBasic-Databricks
-2.	Install Docker Desktop as the solution is going to run on a docker image.
-3.	Create .env file in the root folder, and do not copy any content.
-4.	In the repo, open the workspace.
+1.	Clone the Repository : https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/pulls
+2.	Install Docker Desktop. In this solution, the Visual Code uses the docker image as a remote container to run the solution.
+3.	Create .env file in the root folder, and keep the file blank for now.
+4.	In the repo, open the workspace. File: workspace.ode-workspace. 
+    > Once you click the file, you will get the "Open Worskpace" button at right bottom corner in the code editor. Click it to open the solution into the vscode workspace.
 
 ![Select workspace](docs/images/workspaceselection.jpg)
 
-5.Select the prompt with Reopen in Container 
+5. We need to connect to the docker image as remote container in vs code. In the code repository, we have ./.devcontainer folder that has required docker image file and docker configuration file. Once we load the repo in the vscode, we generally get the prompt. Select "Reopen in Container"
 
-![Open in Container](docs/images/DockerImageLoad.jpg)
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/DockerImageLoad.jpg">
+</p>
 
-6. In the background, it is going to build a docker registry. We need to wait for sometime to complete the all the steps.
-7. Once it is loaded. we will be able to see the below icon in the left bottom corner 
+6. In the background, it is going to build a docker image. We need to wait for sometime to complete the all the steps. the docker image will basically contain the a linux environment which has python 3.7 installed. Please have a look at the configuration file(.devcontainer\devcontainer.json) for more details. 
+7. Once it is loaded. we will be able to see the python interpreter is loaded successfully. Incase it does not show, then click on the select python interpreter => Entire workspace => /usr/local/bin/python
+
 
 ![Open in Container](docs/images/pythonversion.jpg)
+
 
 8.	You will be prompted with installing the required extension on the right bottom corner. Install it.
 
