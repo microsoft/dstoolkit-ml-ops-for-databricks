@@ -21,14 +21,6 @@ import sys
 from pathlib import Path
 
 
-# Owned
-__author__ = "Davide Fornelli"
-__copyright__ = "Microsoft Corporation. All rights reserved."
-__credits__ = ["Davide Fornelli"]
-__version__ = "0.1"
-__maintainer__ = "Davide Fornelli"
-__email__ = "daforne@microsoft.com"
-__status__ = "Development"
 
 
 def recursive_mods(mod: Module) -> List[Module]:
