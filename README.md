@@ -47,30 +47,43 @@ The below sections provide the step by step approach to set up the solution. As 
 4.	In the repo, open the workspace. File: workspace.ode-workspace. 
     > Once you click the file, you will get the "Open Worskpace" button at right bottom corner in the code editor. Click it to open the solution into the vscode workspace.
 
-![Select workspace](docs/images/workspaceselection.jpg)
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/workspaceselection.jpg">
+</p>
 
-5. We need to connect to the docker image as remote container in vs code. In the code repository, we have ./.devcontainer folder that has required docker image file and docker configuration file. Once we load the repo in the vscode, we generally get the prompt. Select "Reopen in Container"
+
+5. We need to connect to the [docker image as remote container in vs code](https://code.visualstudio.com/docs/remote/attach-container#_attach-to-a-docker-container). In the code repository, we have ./.devcontainer folder that has required docker image file and docker configuration file. Once we load the repo in the vscode, we generally get the prompt. Select "Reopen in Container". Otherwise we can go to the VS code command pallette ( ctrl+shift+P in windows), and select the option "Remote-COntainers: Rebuild and Reopen in Containers"
 
 <p align="center">
 <img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/DockerImageLoad.jpg">
 </p>
 
-6. In the background, it is going to build a docker image. We need to wait for sometime to complete the all the steps. the docker image will basically contain the a linux environment which has python 3.7 installed. Please have a look at the configuration file(.devcontainer\devcontainer.json) for more details. 
-7. Once it is loaded. we will be able to see the python interpreter is loaded successfully. Incase it does not show, then click on the select python interpreter => Entire workspace => /usr/local/bin/python
+6. In the background, it is going to build a docker image. We need to wait for sometime to complete build. the docker image will basically contain the a linux environment which has python 3.7 installed. Please have a look at the configuration file(.devcontainer\devcontainer.json) for more details. 
+7. Once it is loaded. we will be able to see the python interpreter is loaded successfully. Incase it does not show, we need to load the interpreter manually. To do that, click on the select python interpreter => Entire workspace => /usr/local/bin/python
 
 
-![Open in Container](docs/images/pythonversion.jpg)
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/pythonversion.jpg">
+</p>
 
 
-8.	You will be prompted with installing the required extension on the right bottom corner. Install it.
+8.	You will be prompted with installing the required extension on the right bottom corner. Install the extensions by clicking on the prompts.
 
-![Open in Container](docs/images/InstallExtensions.jpg)
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/InstallExtensions.jpg">
+</p>
 
-9.	The python extension should be shown as below 
 
-![Python version](docs/images/pythonversion.jpg)
+9.	Once the steps are completed, you should be able to see the python extensions as below:
+
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/pythonversion.jpg">
+</p>
+
 
 ## Section 2: Data bricks Environment creation
+
+> If you already provisioned the databricks environment, then you don't need to setup the environment again. 
 
 This  demo basically creates a new Databricks workspace and cluster. If you would like to reuse the existing workspace and cluster, You can skip this section
  
