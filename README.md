@@ -185,6 +185,12 @@ cd "C:\Users\sapa\OneDrive - Microsoft\Documents\projects\New folder\MLOpsBasic-
 <img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/DatabricksORGIDandHOSTID.JPG">
 </p>
 
+Application Insight Connection String
+
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/AppInsightConnectionString.jpg">
+</p>
+
 At the end, our .env file is going to look as below:
  ```
  
@@ -198,29 +204,60 @@ DATABRICKS_ORDGID=7936878321001673
 
 ## Section 5: Configure the databricks connect
 
-1.	In this step we are going to configure the databricks connect , so that the VS code can connect to the databricks. Run the below command for that from the docker terminal.
+1.	In this step we are going to configure the databricks connect for VS code to connect to databricks. Run the below command for that from the docker (VS Code) terminal.
 
  ```
-python "src/tutorial/scripts/local_config.py" -c "src/tutorial/cluster_config.json"
+$ python "src/tutorial/scripts/local_config.py" -c "src/tutorial/cluster_config.json"
  ```
 >Note: If you get any error saying that "model not found". Try to reload the VS code window and see if you are getting prompt  right bottom corner saying that configuration file changes, rebuild the docker image. Rebuild it and then reload the window. Post that you would not be getting any error. 
  
 #### Verify :
 1.	You will be able to see the message All tests passed.
 
-![Databricks connect test pass](docs/images/databricks-connect-pass.jpg)
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/databricks-connect-pass.jpg">
+</p>
+
 
 ## Section 6:  Create the private package(.whl) and upload to the workspace.
+In this section, we will create the private python package and upload it to the databricks environment. 
+
 1.	Run the below command:
+
+```
 python src/tutorial/scripts/install_dbkframework.py -c "src/tutorial/cluster_config.json"
- 
+``` 
 Post  Execution of the script, we will be able to see the module to be installed.
 
-![Module Installed](docs/images/cluster-upload-wheel.jpg)
+
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/cluster-upload-wheel.jpg">
+</p>
+
 
 ## Section 7: Using the framework.
  
-To check if the framework is working fine or not, lets execute this file : **src/tutorial/remote_analysis.py**
+To check if the framework is working fine or not, lets execute this file : **src/tutorial/scripts/framework_testing/remote_analysis.py**
+
+
 Post running the script, we will be able to see the data in the terminal 
 
-![Module Installed](docs/images/final.jpg)
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/final.jpg">
+</p>
+
+In order to run the same notebook in the databricks, we just need to create a databricks secrets for the application insight connection string. 
+
+For this, we can execute the below query:
+
+```
+python src/tutorial/create_databricks_secrets.py
+
+```
+After copying the content of the remote_analysis.py in the databricks notebook, we get the output as below:
+
+
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/DatabricksNotebookExecution.JPG">
+</p>
+

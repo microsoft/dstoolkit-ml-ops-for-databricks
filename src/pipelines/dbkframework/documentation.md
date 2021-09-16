@@ -219,7 +219,7 @@ Log a message as warning.
 >		 self,
 >		 name: str,
 >		 kwargs: dict
->	 ) ‑> Union[opencensus.trace.span.Span, NoneType]
+>	 ) ‑> Optional[opencensus.trace.span.Span]
 
 Traces a function
 
@@ -1118,7 +1118,7 @@ Initializes the logger
 >	 def run_notebook(
 >		 self,
 >		 notebook: str,
->		 args: Dict,
+>		 args: Dict[~KT, ~VT],
 >		 timeout=86400,
 >		 error_raise=True
 >	 )
@@ -1130,7 +1130,7 @@ Initializes the logger
 >	 def run_notebook_with_retry(
 >		 self,
 >		 notebook: str,
->		 args: Dict,
+>		 args: Dict[~KT, ~VT],
 >		 timeout=86400,
 >		 max_retries=3
 >	 )

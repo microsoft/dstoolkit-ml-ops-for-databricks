@@ -7,13 +7,6 @@ import json
 from typing import Any
 
 
-__author__ = "Davide Fornelli"
-__copyright__ = "Copyright 2021 Microsoft Corporation, MCS ACAI Accelerator."
-__credits__ = ["Davide Fornelli"]
-__version__ = "0.1"
-__maintainer__ = "Davide Fornelli"
-__email__ = "daforne@microsoft.com"
-__status__ = "Development"
 
 
 def current_directory() -> str:
