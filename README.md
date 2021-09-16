@@ -117,7 +117,7 @@ The objectives of this section are:
 At the end of the secret files creation, the folder structure will like below:
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/SecretsFileImage.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/SecretsFileImage.jpg">
 </p>
 
 
@@ -135,7 +135,7 @@ folder\MLOpsBasic-Databricks\src\setup\deployResources.ps1 cannot be loaded beca
 ```
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/PowershellScreen.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/PowershellScreen.jpg">
 </p>
 
 
@@ -145,7 +145,7 @@ folder\MLOpsBasic-Databricks\src\setup\deployResources.ps1 cannot be loaded beca
 
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/DatabricksTokenGeneration.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/DatabricksTokenGeneration.jpg">
 </p>
 
 2.	Run the following command
@@ -160,13 +160,13 @@ cd "C:\Users\sapa\OneDrive - Microsoft\Documents\projects\New folder\MLOpsBasic-
 
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/SuccessfulClusterCreation.JPG">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/SuccessfulClusterCreation.JPG">
 </p>
 
 4.	Copy the output of the script and paste it to the .env file which we had created previously 
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/OutputOfTheConfigurationStep.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/OutputOfTheConfigurationStep.jpg">
 </p>
 
 ## Section 4: Create the .env file
@@ -182,13 +182,13 @@ cd "C:\Users\sapa\OneDrive - Microsoft\Documents\projects\New folder\MLOpsBasic-
  
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/DatabricksORGIDandHOSTID.JPG">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/DatabricksORGIDandHOSTID.JPG">
 </p>
 
 Application Insight Connection String
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/AppInsightConnectionString.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/AppInsightConnectionString.jpg">
 </p>
 
 At the end, our .env file is going to look as below:
@@ -215,7 +215,7 @@ $ python "src/tutorial/scripts/local_config.py" -c "src/tutorial/cluster_config.
 1.	You will be able to see the message All tests passed.
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/databricks-connect-pass.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/databricks-connect-pass.jpg">
 </p>
 
 
@@ -231,7 +231,7 @@ Post  Execution of the script, we will be able to see the module to be installed
 
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/cluster-upload-wheel.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/cluster-upload-wheel.jpg">
 </p>
 
 
@@ -243,7 +243,7 @@ To check if the framework is working fine or not, lets execute this file : **src
 Post running the script, we will be able to see the data in the terminal 
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/final.jpg">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/final.jpg">
 </p>
 
 In order to run the same notebook in the databricks, we just need to create a databricks secrets for the application insight connection string. 
@@ -258,6 +258,6 @@ After copying the content of the remote_analysis.py in the databricks notebook, 
 
 
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/user/sam/refactoring/docs/images/DatabricksNotebookExecution.JPG">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/DatabricksNotebookExecution.JPG">
 </p>
 
