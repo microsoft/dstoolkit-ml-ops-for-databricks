@@ -124,13 +124,13 @@ At the end of the secret files creation, the folder structure will like below:
 3. Open the Powershell ISE in your local machine. We are going to run the Powershell script to create the required resources. The name of the resources are basically having a prefix to the resourcegroup name.
 4.set the root path of the Powershell terminal till setup, and execute the deployResource.ps1
  ```
-cd "C:\Users\sapa\OneDrive - Microsoft\Documents\projects\New folder\MLOpsBasic-Databricks\src\setup"
+cd "C:\Users\projects\New folder\MLOpsBasic-Databricks\src\setup"
 .\deployResources.ps1
  ```
 > If you receive the below error, execute the  command [
 Set-ExecutionPolicy RemoteSigned]
 
- ```>.\deployResources.ps1 : File C:\Users\sapa\OneDrive - Microsoft\Documents\projects\New 
+ ```>.\deployResources.ps1 : File C:\Users\projects\New 
 folder\MLOpsBasic-Databricks\src\setup\deployResources.ps1 cannot be loaded because running scripts is disabled on this.
 ```
 
@@ -151,7 +151,7 @@ folder\MLOpsBasic-Databricks\src\setup\deployResources.ps1 cannot be loaded beca
 2.	Run the following command
  
  ```
-cd "C:\Users\sapa\OneDrive - Microsoft\Documents\projects\New folder\MLOpsBasic-Databricks\src\setup"
+cd "C:\Users\projects\New folder\MLOpsBasic-Databricks\src\setup"
  
 .\configureResources.ps1
  ```
@@ -178,7 +178,7 @@ cd "C:\Users\sapa\OneDrive - Microsoft\Documents\projects\New folder\MLOpsBasic-
 - APPI_IK=connection string of the application insight
 - DATABRICKS_HOST=The URL of the databricks workspace.
 - DATABRICKS_TOKEN= Databricks Personal Access Token which was generated in the previous step.
-- DATABRICKS_ORDGID=7936878321001673
+- DATABRICKS_ORDGID=OrgID of the databricks that can be fetched from the databricks URL.
  
 
 <p align="center">
@@ -195,7 +195,7 @@ At the end, our .env file is going to look as below:
  ```
  
 PYTHONPATH=/workspaces/MLOpsBasic-Databricks/src/modules
-APPI_IK=InstrumentationKey=e6221ea6-a3b9-4739-918f-8a0985a1502f;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/
+APPI_IK=InstrumentationKey=e6221ea6xxxxxxf-8a0985a1502f;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/
 DATABRICKS_HOST=https://adb-7936878321001673.13.azuredatabricks.net
 DATABRICKS_TOKEN= <Provide the secret>
 DATABRICKS_ORDGID=7936878321001673
