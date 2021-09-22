@@ -153,7 +153,8 @@ class Step_crossValidate(DataStep):
 
 Engine()
 Engine().get_instance().initialize_env()
-pipeline_name = Path(__file__).stem
+# pipeline_name = Path(__file__).stem
+pipeline_name = "Remote Testing"
 Engine().get_instance().initialize_logger(pipeline_name=pipeline_name)
 # Engine().get_instance().spark().conf.set("spark.sql.execution.arrow.enabled", "true")
 
