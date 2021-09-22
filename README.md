@@ -43,7 +43,7 @@ The below sections provide the step by step approach to set up the solution. As 
 
 1.	Clone the Repository : https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/pulls
 2.	Install Docker Desktop. In this solution, the Visual Code uses the docker image as a remote container to run the solution.
-3.	Create .env file in the root folder, and keep the file blank for now.
+3.	Create .env file in the root folder, and keep the file blank for now. (root foolder is the parent folder of the project)
 4.	In the repo, open the workspace. File: workspace.ode-workspace. 
     > Once you click the file, you will get the "Open Workspace" button at right bottom corner in the code editor. Click it to open the solution into the vscode workspace.
 
@@ -111,7 +111,7 @@ The objectives of this section are:
 }
 ```
  
-2. create the file and provide the client ID secret in this file : **src/vault/appsecret.txt**      
+2. create the file and provide the client ID secret in this file : **src/setup/vault/appsecret.txt**      
 > Incase you are not able to create the file from the solution, you can directly go to the file explorer to create the file.
 
 > NOTE: DBSecret.txt will be created in the later section, please ignore it for now. 
@@ -143,7 +143,7 @@ folder\MLOpsBasic-Databricks\src\setup\deployResources.ps1 cannot be loaded beca
 
 ## Section 3: Databricks Cluster Creation
 
-1.	To create the databricks cluster we need to have personal Access token created. Go to the Databricks workspace, and get the personal access token from the user setting, and save it in the file src/vault/DBKtoken.txt
+1.	To create the databricks cluster we need to have personal Access token created. Go to the Databricks workspace, and get the personal access token from the user setting, and save it in the file src/setup/vault/DBKtoken.txt
 
 
 <p align="center">
