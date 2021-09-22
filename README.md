@@ -211,8 +211,15 @@ DATABRICKS_ORDGID=7936878321001673
  ```
 $ python "src/tutorial/scripts/local_config.py" -c "src/tutorial/cluster_config.json"
  ```
->Note: If you get any error saying that "model not found". Try to reload the VS code window and see if you are getting prompt  right bottom corner saying that configuration file changes, rebuild the docker image. Rebuild it and then reload the window. Post that you would not be getting any error. 
+>Note: If you get any error saying that "ModelNotFound : No module names dbkcore". Try to reload the VS code window and see if you are getting prompt  right bottom corner saying that configuration file changes, rebuild the docker image. Rebuild it and then reload the window. Post that you would not be getting any error. Also, check if the python interpreter is being selected properly. They python interpreter path should be **/usr/local/bin/python **
  
+<p align="center">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/Verify_Python_Interpreter">
+</p>
+
+
+
+
 #### Verify :
 1.	You will be able to see the message All tests passed.
 
