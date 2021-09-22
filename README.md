@@ -176,7 +176,7 @@ cd "C:\Users\projects\New folder\MLOpsBasic-Databricks\src\setup"
 
 1.	We need to manually change the databricks host and appI_IK values. Other values should be "as is" from the output of the previous script.
 
-- PYTHONPATH=/workspaces/MLOpsBasic-Databricks/src/modules [The python path in the docker container]
+- PYTHONPATH=/workspaces/dstoolkit-ml-ops-for-databricks/src/modules [This is  full path to the module folder in the repository.]
 - APPI_IK=connection string of the application insight
 - DATABRICKS_HOST=The URL of the databricks workspace.
 - DATABRICKS_TOKEN= Databricks Personal Access Token which was generated in the previous step.
@@ -196,7 +196,7 @@ Application Insight Connection String
 At the end, our .env file is going to look as below:
  ```
  
-PYTHONPATH=/workspaces/MLOpsBasic-Databricks/src/modules
+PYTHONPATH=/workspaces/dstoolkit-ml-ops-for-databricks/src/modules
 APPI_IK=InstrumentationKey=e6221ea6xxxxxxf-8a0985a1502f;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/
 DATABRICKS_HOST=https://adb-7936878321001673.13.azuredatabricks.net
 DATABRICKS_TOKEN= <Provide the secret>
@@ -214,7 +214,7 @@ $ python "src/tutorial/scripts/local_config.py" -c "src/tutorial/cluster_config.
 >Note: If you get any error saying that "ModelNotFound : No module names dbkcore". Try to reload the VS code window and see if you are getting prompt  right bottom corner saying that configuration file changes, rebuild the docker image. Rebuild it and then reload the window. Post that you would not be getting any error. Also, check if the python interpreter is being selected properly. They python interpreter path should be **/usr/local/bin/python **
  
 <p align="center">
-<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/Verify_Python_Interpreter">
+<img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/Verify_Python_Interpreter.jpg">
 </p>
 
 
@@ -246,7 +246,9 @@ Post  Execution of the script, we will be able to see the module to be installed
 
 ## Section 7: Using the framework.
  
-To check if the framework is working fine or not, let's execute this file : **src/tutorial/scripts/framework_testing/remote_analysis.py**
+### Exceution from Local VS Code. 
+To check if the framework is working fine or not, let's execute this file : **src/tutorial/scripts/framework_testing/remote_analysis.py** . It is better to execute is using the interactive window. As the Interactive window can show the pandas dataframe which is the output of the script. Otherwise the script can be executed from the Terminal as well. 
+To run the script from the interactive window, select the whole script => right click => run the selection in the interactive window.
 
 
 Post running the script, we will be able to see the data in the terminal 
@@ -254,6 +256,8 @@ Post running the script, we will be able to see the data in the terminal
 <p align="center">
 <img src = "https://github.com/microsoft/dstoolkit-ml-ops-for-databricks/blob/main/docs/images/final.jpg">
 </p>
+
+### Exceution from Databricks.
 
 In order to run the same notebook in the databricks, we just need to create a databricks secrets for the application insight connection string. 
 
