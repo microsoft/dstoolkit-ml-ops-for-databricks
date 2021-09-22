@@ -114,7 +114,7 @@ The objectives of this section are:
 2. create the file and provide the client ID secret in this file : **src/setup/vault/appsecret.txt**      
 > Incase you are not able to create the file from the solution, you can directly go to the file explorer to create the file.
 
-> NOTE: DBSecret.txt will be created in the later section, please ignore it for now. 
+> NOTE: DBToken.txt will be created in the later section, please ignore it for now. 
 
 At the end of the secret files creation, the folder structure will like below:
 
