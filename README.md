@@ -246,7 +246,7 @@ Post  Execution of the script, we will be able to see the module to be installed
 
 ## Section 7: Using the framework.
  
-To check if the framework is working fine or not, lets execute this file : **src/tutorial/scripts/framework_testing/remote_analysis.py**
+To check if the framework is working fine or not, let's execute this file : **src/tutorial/scripts/framework_testing/remote_analysis.py**
 
 
 Post running the script, we will be able to see the data in the terminal 
