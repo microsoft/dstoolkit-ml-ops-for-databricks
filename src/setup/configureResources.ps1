@@ -15,12 +15,12 @@ Post Execution Step
 1. create .env file in root with the details from the output of the execution
 
 PYTHONPATH=/workspaces/MLOpsBasic-Databricks/src/modules
-APPI_IK="7936932708497696"
-DATABRICKS_HOST=https://adb-dapi398220b1d763f6cf6e94657b066e49b7-2.XX.azuredatabricks.net/
-DATABRICKS_TOKEN=7936932708497696
-DATABRICKS_ORDGID=53d00092-2e8c-496b-9634-ae6a9658c775
+APPI_IK="7936xxxx8497696"
+DATABRICKS_HOST=https://adb-dapi398220xxxxxb066e49b7-2.XX.azuredatabricks.net/
+DATABRICKS_TOKEN=793xxxx8497696
+DATABRICKS_ORDGID=53d000xxxxb-9634-ae6a9658c775
 
-2. DATABRICKS_HOST=https://adb-dapi398220b1d763f6cf6e94657b066e49b7-2.XX.azuredatabricks.net/ ==> change the "XX" with the correct version from the databricks workspace URL.
+2. DATABRICKS_HOST=https://adb-dapi3982xxxx6e94657b066e49b7-2.XX.azuredatabricks.net/ ==> change the "XX" with the correct version from the databricks workspace URL.
 
 #>
 
