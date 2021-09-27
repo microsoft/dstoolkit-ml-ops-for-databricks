@@ -157,7 +157,7 @@ We need to manually change the databricks host and appI_IK values. Other values 
 - DATABRICKS_TOKEN: Databricks Personal Access Token which was generated in the previous step.
 - DATABRICKS_ORDGID: OrgID of the databricks that can be fetched from the databricks URL.
 
-![DatabricksORGIDandHOSTID](docs/images/DatabricksORGIDandHOSTID.jpg)
+![DatabricksORGIDandHOSTID](docs/images/DatabricksORGIDandHOSTID.JPG)
 
 Application Insight Connection String
 
