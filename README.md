@@ -139,7 +139,7 @@ cd "C:\Users\projects\New folder\MLOpsBasic-Databricks\src\setup"
 
 3. At the end of the script execution, we will be able to see the databricks cluster has been created successfully.the config file: src\setup\util\DBCluster-Configuration.json is being used to create the cluster.
 
-![SuccessfulClusterCreation](docs/images/SuccessfulClusterCreation.jpg)
+![SuccessfulClusterCreation](docs/images/SuccessfulClusterCreation.JPG)
 
 4. Copy the output of the script and paste it to the .env file which we had created previously
 
