@@ -126,7 +126,7 @@ folder\MLOpsBasic-Databricks\src\setup\deployResources.ps1 cannot be loaded beca
 
 Post successful execution of the script, we can see the resources created successfully in the Azure Subscription.
 
-![AzureResources](docs/images/AzureResources.jpg)
+![AzureResources](docs/images/AzureResources.JPG)
 
 
 ## Section 3: Databricks cluster creation
