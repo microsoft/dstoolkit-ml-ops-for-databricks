@@ -8,11 +8,14 @@ This repository contains the Databricks development framework for delivering any
 
 The accelerator contains few of the core features of Databricks development which can be extended or reused in any implementation projects with Databricks.
 
+![overview](docs/images/Overview.JPG)
+
 - Logging Framework using the [Opensensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 - Support for Databricks development from VS Code IDE using the [Databricks Connect](https://docs.microsoft.com/en-us/azure/databricks/dev-tools/databricks-connect#visual-studio-code) feature.
 - continuous development with [Python Local Packaging](https://packaging.python.org/tutorials/packaging-projects/)
 - Implementation of the Databricks utilities in VS Code such as dbutils, notebook execution, secret handling.
 - Example Model file which uses the framework end to end.
+
 
 # Prerequisites
 
@@ -212,6 +215,12 @@ Post Execution of the script, we will be able to see the module to be installed.
 ## Section 7: Using the framework
 
 ![map07](docs/images/map07.png)
+
+We have a  pipeline that performs the data preparation, unit testing, logging, training of the model.
+
+
+![PipelineSteps](docs/images/PipelineSteps.JPG)
+
 
 ### Execution from Local VS Code
 
