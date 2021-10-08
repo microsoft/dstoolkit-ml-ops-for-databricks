@@ -994,8 +994,7 @@ Specifices how to log the object
 > 
 >	 class Engine
 
-This is the core of the framework. It configures the environment to
-interact with the remote Databricks cluster of Centrica.
+This is the core of the framework. It configures the environment to interact with the remote Databricks cluster.
 
 Instantiate the current object
 

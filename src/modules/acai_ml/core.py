@@ -12,7 +12,7 @@ class Engine(metaclass=Singleton):
 
     """
     This is the core of the framework.
-    It configures the environment to interact with the remote Databricks cluster of Centrica.
+    It configures the environment to interact with the remote Databricks.
     """
 
     def __init__(self):
