@@ -26,6 +26,13 @@ To successfully complete your solution, you will need to have access to and or p
 - VS Code installed.
 - Docker Desktop Installed.
 
+# Create the Service Principal
+
+- [Instruction to create the service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#register-an-application-with-azure-ad-and-create-a-service-principal)
+- [Instruction to assign role to the service principal access over the Subscription](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application). Please provide **contributor** access over the subscription.
+- [Instruction to Get application ID and tenant ID for the application you registered](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in)
+- [Instruction to create application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret). The application Secret is needed at the later part of this setup. Please copy the **value** and store it in a notepad for now.
+
 # Getting Started
 
 The below sections provide the step by step approach to set up the solution. As part of this solution, we need the following resources to be provisioned in a resource group.
@@ -121,6 +128,10 @@ cd "C:\Users\projects\New folder\MLOpsBasic-Databricks\src\setup"
 >.\deployResources.ps1 : File C:\Users\projects\New
 folder\MLOpsBasic-Databricks\src\setup\deployResources.ps1 cannot be loaded because running scripts is disabled on this.
 ```
+> if you get the error module is not found, and if Powershell ISE is not able to recognize any specific Powershell command, then Install the Powershell Az Module. [Instructions](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-6.4.0)
+``` cmd
+Install-Module  Az
+```
 
 ![PowershellScreen](docs/images/PowershellScreen.jpg)
 
@@ -149,7 +160,7 @@ cd "C:\Users\projects\New folder\MLOpsBasic-Databricks\src\setup"
 
 ![SuccessfulClusterCreation](docs/images/SuccessfulClusterCreation.JPG)
 
-4. Copy the output of the script and paste it to the .env file which we had created previously
+4. Copy the output of the script and paste it to the .env file which we had created previously. Please note that the values of the variables will be different as per your environment configuration.
 
 ![OutputOfTheConfigurationStep](docs/images/OutputOfTheConfigurationStep.jpg)
 
@@ -171,7 +182,7 @@ Application Insight Connection String
 
 ![AppInsightConnectionString](docs/images/AppInsightConnectionString.jpg)
 
-At the end, our .env file is going to look as below:
+At the end, our .env file is going to look as below. You can copy the content and change the values according to your environment.
 
 ``` conf
 PYTHONPATH=/workspaces/dstoolkit-ml-ops-for-databricks/src/modules

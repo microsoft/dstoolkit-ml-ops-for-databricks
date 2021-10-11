@@ -78,7 +78,7 @@ $appInsightName = ((Get-AzApplicationInsights -ResourceGroupName $resourceGroupn
 $instrumentationKey = $appInsightName.InstrumentationKey
 
 
-$output = 'PYTHONPATH=/workspaces/MLOpsBasic-Databricks/src/modules
+$output = 'PYTHONPATH=/workspaces/dstoolkit-ml-ops-for-databricks/src/modules
 APPI_IK={0}
 DATABRICKS_HOST=https://adb-{1}.XX.azuredatabricks.net/
 DATABRICKS_TOKEN={2}
