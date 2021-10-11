@@ -160,7 +160,7 @@ cd "C:\Users\projects\New folder\MLOpsBasic-Databricks\src\setup"
 
 ![SuccessfulClusterCreation](docs/images/SuccessfulClusterCreation.JPG)
 
-4. Copy the output of the script and paste it to the .env file which we had created previously. Please note that the values of the variables will be different as per your environment configuration.
+4. Copy the output of the script and paste it to the .env file which we had created previously. Please note that the values of the variables will be different as per your environment configuration. the later section (Section 4) describes the creation of .env file in detail.
 
 ![OutputOfTheConfigurationStep](docs/images/OutputOfTheConfigurationStep.jpg)
 
