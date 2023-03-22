@@ -1,5 +1,6 @@
 ![Banner](docs/images/MLOps_for_databricks_Solution_Acclerator_logo.JPG)
 
+# REPO DEPRECATED : SEE UPDATED REPO AT: https://github.com/microsoft/dstoolkit-mlops-databricks
 # About this repository
 
 This repository contains the Databricks development framework for delivering any Data Engineering projects, and machine learning projects based on the Azure Technologies.
